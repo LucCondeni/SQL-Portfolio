@@ -1,1 +1,207 @@
+# Video Game Sales :cd:
+
+## Summary:
+
+Analysis on video games and which titles, genres, platforms, and publishers are popular. 
+Dataset obtained on Kaggle: 
+
+[video_game_dataset](https://www.kaggle.com/datasets/gregorut/videogamesales)
+
+Data set contains 16,589 video games with variables:  
+* Rank - Ranking of overall sales
+* Name - The games name
+* Platform - Platform of the games release (i.e. PC,PS4, etc.)
+* Year - Year of the game's release
+* Genre - Genre of the game
+* Publisher - Publisher of the game
+* NA_Sales - Sales in North America (in millions)
+* EU_Sales - Sales in Europe (in millions)
+* JP_Sales - Sales in Japan (in millions)
+* Other_Sales - Sales in the rest of the world (in millions)
+* Global_Sales - Total worldwide sales.
+
+Data covers unit sales in North America, Europe, and Japanese markets from 1976-2020. There are no game titles from 1978 or 1979. 
+
+## Objectives: 
+
+- Show most popular platform/genre by year and sales 
+
+- Show most successful games by sales region 
+
+- Show trends in genre over time / Show most popular genres by sales region
+
+- Popular publisher by sales region and genre
+
+## Analysis: 
+
+Complete syntax [here](https://github.com/LucCondeni/SQL-Portfolio/blob/main/Video%20Game%20Sales/videogames.sql)
+
+### Reviewed Data:
+Data was mostly already clean. Other than N/A values in 'year' column data was complete. 
+
+1. Manually corrected N/A's in 'year' column for games with unit sales > $1M 
+2. Manually removed remaining NA's from 'year' column 
+3. Checked data: 
+
+``` sql 
+
+SELECT DISTINCT title
+FROM public."Video_Game_Sales" -- 11,493 rows affeced; There are 5,100 multiplatform games 
+
+SELECT DISTINCT title, platform
+FROM public."Video_Game_Sales" -- 16,593 rows affeced; no duplicate titles or platforms
+
+SELECT title, platform, genre, publisher
+FROM public."Video_Game_Sales"
+WHERE title = 'NA' OR   
+	platform = 'NA' OR 
+	genre ='NA' OR
+	publisher = 'NA' --There are no N/A's in the title, platform, genre, or publisher columns
+
+SELECT LENGTH(CAST(year AS varchar(10))) AS num_letters_years
+FROM public."Video_Game_Sales"
+WHERE LENGTH(CAST(year AS varchar(10))) > 4 --0 rows returned; All years 4 or less
+
+SELECT LENGTH(CAST(year AS varchar(10))) AS num_letters_years
+FROM public."Video_Game_Sales"
+WHERE LENGTH(CAST(year AS varchar(10))) < 4 --0 rows returned; All years greater than 4 digits
+
+SELECT rank, title, year
+FROM public."Video_Game_Sales"
+WHERE year ISNULL --259 games have null for year. Chose to keep them in for platform agg sales data
+
+SELECT *
+FROM public."Video_Game_Sales"
+WHERE year = 1978 or year = 1979 -- There are no game titles from 1978 or 1979
+
+```
+### Summary Statistics: 
+
+```sql 
+
+	--NA Sales
+SELECT platform, year, 
+		MIN(na_sales) AS min_sales_na, 
+		MAX(na_sales) AS max_sales_na, 
+		AVG(na_sales) AS avg_sales_na, 
+		SUM(na_sales) AS sum_sales_na
+FROM public."Video_Game_Sales"
+GROUP BY year, platform 
+ORDER BY platform, year DESC
+
+	--EU Sales
+SELECT platform, year, 
+		MIN(eu_sales) AS min_sales_eu, 
+		MAX(eu_sales) AS max_sales_eu, 
+		AVG(eu_sales) AS avg_sales_eu, 
+		SUM(eu_sales) AS sum_sales_eu
+FROM public."Video_Game_Sales"
+GROUP BY year, platform 
+ORDER BY platform, year DESC
+
+	--JP Sales
+SELECT platform, year, 
+		MIN(jp_sales) AS min_sales_jp, 
+		MAX(jp_sales) AS max_sales_jp, 
+		AVG(jp_sales) AS avg_sales_jp, 
+		SUM(jp_sales) AS sum_sales_jp
+FROM public."Video_Game_Sales"
+GROUP BY year, platform 
+ORDER BY platform, year DESC	
+
+	--Sum Sales by Platform
+SELECT platform,  
+		SUM(na_sales) AS total_na_sales, 
+		SUM(eu_sales) AS total_eu_sales, 
+		SUM(jp_sales) AS total_jp_sales
+FROM public."Video_Game_Sales"
+GROUP BY platform 
+
+	--Avg Sales by Platform 
+SELECT platform, 
+		AVG(na_sales) AS avg_na_sales, 
+		AVG(eu_sales) AS avg_eu_sales, 
+		AVG(jp_sales) AS avg_jp_sales
+FROM public."Video_Game_Sales"
+GROUP BY platform 
+
+```
+### Objective 1: Popular platform and genre 
+
+1.Platform/genre by year and total sales:
+
+``` sql 
+SELECT platform, genre, year,  
+	SUM(na_sales)+SUM(eu_sales)+SUM(jp_sales) as total_sales
+FROM public."Video_Game_Sales"
+GROUP BY platform, genre, year
+ORDER BY platform, year DESC
+```
+
+2. Genre number of occurrence by year
+
+```sql
+	--Genre by year and occurrence
+SELECT DISTINCT genre, year, 
+	COUNT (genre) OVER(PARTITION BY genre, year) AS num_of_genre
+FROM public."Video_Game_Sales"
+ORDER BY genre, year DESC
+```
+
+3. Genre global sales by year all
+
+```sql 
+SELECT DISTINCT genre, year, SUM(global_sales) AS total_sales_global 
+FROM public."Video_Game_Sales"
+GROUP BY genre, year
+ORDER BY genre, year DESC
+```
+
+4. Platform global sales by year
+
+```sql 
+SELECT DISTINCT platform, year, SUM(global_sales) AS total_sales_global
+FROM public."Video_Game_Sales"
+GROUP BY platform, year 
+ORDER BY platform, year DESC
+```
+
+5. Best selling genre per year
+
+```sql 
+SELECT MAX(total_sales) max_sales, year, genre
+	  FROM (SELECT SUM(global_sales) as total_sales, year, genre
+		    FROM public."Video_Game_Sales"
+	 		GROUP BY year, genre
+			 ORDER BY total_sales DESC 
+			 )		a 
+GROUP BY year, genre 
+ORDER BY year, max_sales DESC
+
+```
+
+### Objective 2: Most Successful Games by Sales Region 
+
+```sql 
+SELECT title, genre, year, na_sales
+FROM public."Video_Game_Sales"
+ORDER BY na_sales DESC 
+LIMIT 30
+
+SELECT title, genre, year, eu_sales
+FROM public."Video_Game_Sales"
+ORDER BY eu_sales DESC 
+LIMIT 30
+
+SELECT title, genre, year, jp_sales
+FROM public."Video_Game_Sales"
+ORDER BY jp_sales DESC 
+LIMIT 30
+```
+
+### Objective 3: Trends in genre over time / Most popular genres by sales region
+
+
+
+
 
