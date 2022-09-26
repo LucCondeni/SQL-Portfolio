@@ -126,7 +126,7 @@ FROM public."Video_Game_Sales"
 GROUP BY platform 
 
 ```
-### Objective 1: Popular platform and genre 
+### Objective 1: Popular platforms and genres 
 
 1.Platform/genre by year and total sales:
 
