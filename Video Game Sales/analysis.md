@@ -2,7 +2,7 @@
 
 ## Summary:
 
-Analysis on video games and which titles, genres, platforms, and publishers are popular. 
+Purpose is to summarize which video game titles, genres, platforms, and publishers are most popular, when, and where. 
 Dataset obtained on Kaggle: 
 
 [video_game_dataset](https://www.kaggle.com/datasets/gregorut/videogamesales)
