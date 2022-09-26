@@ -1,5 +1,5 @@
 # SQL-Portfolio :books:
-Location for my SQL based projects and output 
+My SQL based projects and output 
 
 Level: Beginner SQL
 
