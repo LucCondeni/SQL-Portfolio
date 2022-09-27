@@ -20,7 +20,7 @@ Data set contains 16,589 video games with variables:
 * Other_Sales - Sales in the rest of the world (in millions)
 * Global_Sales - Total worldwide sales.
 
-Data covers unit sales in North America, Europe, and Japanese markets from 1976-2020. There are no game titles from 1978 or 1979. 
+Data covers unit sales in North America, Europe, and Japanese markets from 1976-2020. There are no game titles from 1978 or 1979. No significant data after 2016. 
 
 ## Objectives: 
 
@@ -200,8 +200,9 @@ LIMIT 30
 ```
 
 ### Objective 3: Trends in genre over time / Most popular genres by sales region
- 
-	--Count of genre by top NA sales
+
+1. Count of genre by top NA sales
+```sql 
 SELECT a.year, a.genre, COUNT(a.genre)
 FROM (
 SELECT title, year, genre, na_sales
@@ -210,8 +211,10 @@ ORDER BY na_sales DESC
 	) a
 GROUP BY a.year, a.genre
 ORDER BY a.year
+```
 
-	--Count of genre by top EU sales
+2. Count of genre by top EU sales
+``` sql 
 SELECT a.year, a.genre, COUNT(a.genre)
 FROM (
 SELECT title, year, genre, eu_sales
@@ -220,8 +223,9 @@ ORDER BY eu_sales DESC
 	) a
 GROUP BY a.year, a.genre
 ORDER BY a.year
-
-	--Count of genre by top JP sales
+```
+3. Count of genre by top JP sales
+``` sql
 SELECT a.year, a.genre, COUNT(a.genre)
 FROM (
 SELECT title, year, genre, jp_sales
@@ -230,30 +234,36 @@ ORDER BY jp_sales DESC
 	) a
 GROUP BY a.year, a.genre
 ORDER BY a.year
+```
 
-	--Genre sales NA 
+4. Genre sales NA 
+``` sql 
 SELECT genre, SUM(na_sales) as sum_na_sales
 FROM public."Video_Game_Sales"
 GROUP BY genre
 ORDER BY sum_na_sales DESC
+```
 
-	--Genre sales EU
+5. Genre sales EU
+```sql 
 SELECT genre, SUM(eu_sales) as sum_eu_sales
 FROM public."Video_Game_Sales"
 GROUP BY genre
 ORDER BY sum_eu_sales DESC
+```
 
-	--Genre sales JP
+6. Genre sales JP
+```sql 
 SELECT genre, SUM(jp_sales) as sum_jp_sales
 FROM public."Video_Game_Sales"
 GROUP BY genre
 ORDER BY sum_jp_sales DESC
-
+```
 
 ### Objective 4: Popular Publishers by sales region / genre
 
-
---Publishers by NA Sales Top 5000
+1. Publishers by NA Sales Top 5000
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, na_sales
 	 FROM public."Video_Game_Sales"
@@ -262,8 +272,9 @@ FROM (SELECT title, publisher, na_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
-
-	--Publishers by NA Sales Top 100
+```
+2. Publishers by NA Sales Top 100
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, na_sales
 	 FROM public."Video_Game_Sales"
@@ -272,8 +283,10 @@ FROM (SELECT title, publisher, na_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
+```
 
-	--Publishers by EU Sales Top 5000
+3. Publishers by EU Sales Top 5000
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, eu_sales
 	 FROM public."Video_Game_Sales"
@@ -282,8 +295,10 @@ FROM (SELECT title, publisher, eu_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
+```
 
-	--Publishers by EU Sales Top 100
+4. Publishers by EU Sales Top 100
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, eu_sales
 	 FROM public."Video_Game_Sales"
@@ -292,8 +307,10 @@ FROM (SELECT title, publisher, eu_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
+```
 
-	--Publishers by JP Sales Top 5000
+5. Publishers by JP Sales Top 5000
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, jp_sales
 	 FROM public."Video_Game_Sales"
@@ -302,8 +319,10 @@ FROM (SELECT title, publisher, jp_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
+```
 
-	--Publishers by JP Sales Top 100
+6. Publishers by JP Sales Top 100
+```sql
 SELECT a.publisher, COUNT(a.publisher) as pub_count
 FROM (SELECT title, publisher, jp_sales
 	 FROM public."Video_Game_Sales"
@@ -312,14 +331,18 @@ FROM (SELECT title, publisher, jp_sales
 	 ) a
 GROUP BY a.publisher
 ORDER BY pub_count DESC
+```
 
-	--Genre by Publisher 
+7. Genre by Publisher 
+```sql
 SELECT DISTINCT genre, COUNT(publisher) as pub_count
 FROM public."Video_Game_Sales"
 GROUP BY genre
 ORDER BY pub_count DESC
+```
 
-	--Top Publishers and their genres
+8. Top Publishers and their genres
+```sql
 WITH cte AS ( 
 	SELECT publisher, genre, total_sales, top_genre, 
 		RANK() OVER(PARTITION BY publisher
@@ -334,11 +357,18 @@ SELECT DISTINCT publisher, genre, total_sales, top_genre
 FROM cte 
 WHERE r=1
 ORDER BY total_sales DESC
+```
 
-	--Publisher Global Sales
+9. Publisher Global Sales
+```sql 
 SELECT publisher, SUM(global_sales) as total_sales
 FROM public."Video_Game_Sales"
 GROUP BY publisher
 ORDER BY total_sales DESC
+```
+
+## Conclusion and Findings 
+
+
 
 
