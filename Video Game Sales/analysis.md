@@ -199,7 +199,7 @@ ORDER BY jp_sales DESC
 LIMIT 30
 ```
 
-### Objective 3: Trends in genre over time / Most popular genres by sales region
+### Objective 3: Trends in genre over time 
 
 1. Count of genre by top NA sales
 ```sql 
@@ -236,7 +236,9 @@ GROUP BY a.year, a.genre
 ORDER BY a.year
 ```
 
-4. Genre sales NA 
+### Objective 4: Most popular genres by sales region
+
+1. Genre sales NA 
 ``` sql 
 SELECT genre, SUM(na_sales) as sum_na_sales
 FROM public."Video_Game_Sales"
@@ -244,7 +246,7 @@ GROUP BY genre
 ORDER BY sum_na_sales DESC
 ```
 
-5. Genre sales EU
+2. Genre sales EU
 ```sql 
 SELECT genre, SUM(eu_sales) as sum_eu_sales
 FROM public."Video_Game_Sales"
@@ -252,7 +254,7 @@ GROUP BY genre
 ORDER BY sum_eu_sales DESC
 ```
 
-6. Genre sales JP
+3. Genre sales JP
 ```sql 
 SELECT genre, SUM(jp_sales) as sum_jp_sales
 FROM public."Video_Game_Sales"
@@ -260,7 +262,7 @@ GROUP BY genre
 ORDER BY sum_jp_sales DESC
 ```
 
-### Objective 4: Popular Publishers by sales region / genre
+### Objective 5: Popular Publishers by sales region / genre
 
 1. Publishers by NA Sales Top 5000
 ```sql
