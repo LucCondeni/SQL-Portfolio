@@ -371,7 +371,7 @@ ORDER BY total_sales DESC
 
 ## Conclusion and Findings 
 
-ALL VIZ (add link)
+[All Viz](https://public.tableau.com/app/profile/lucas.condeni/viz/vgsalesviz/videogame_sales)
 
 ![All Sales Years](https://user-images.githubusercontent.com/110264861/192432491-5b7c06ca-1782-4b47-b11a-63313852e591.png)
 
