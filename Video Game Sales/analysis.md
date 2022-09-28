@@ -373,7 +373,13 @@ ORDER BY total_sales DESC
 
 [All Viz](https://public.tableau.com/app/profile/lucas.condeni/viz/vgsalesviz/videogame_sales)
 
+Here's what the data showed about the objectives. Starting with total sales in each of the three sales regions (NA, EU, JP) over the specified timeframe. Also shown is average sales:
+
 ![All Sales Years](https://user-images.githubusercontent.com/110264861/192432491-5b7c06ca-1782-4b47-b11a-63313852e591.png)
+
+
+North America has a much larger market than Europe or Japan which makes sense based on population. Then platform total sales: 
+
 
 
 
