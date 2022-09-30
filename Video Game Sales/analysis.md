@@ -371,13 +371,6 @@ ORDER BY total_sales DESC
 
 ## Conclusion and Findings 
 
-- Show most successful games by sales region 
-
-- Show trends in genre over time / Show most popular genres by sales region
-
-- Popular publisher by sales region and genre
-
-
 [All Viz](https://public.tableau.com/app/profile/lucas.condeni/viz/vgsalesviz/videogame_sales)
 
 1. Overview of the three sales regions (NA, EU, JP) over the specified timeframe by total units sold and average units sold:  
@@ -396,15 +389,44 @@ There are multiple genres that stand out, but Action and Sports are clear favori
 
 2. Top game titles in each sales region: 
 
+![Popular Titles NA](https://user-images.githubusercontent.com/110264861/193208828-a07eab7d-4abe-4711-8da8-f4a9e8643f5a.png)
+
+NA has interesting results. Wii Sports sold over 40 million copies and makes up over 10% of the total units sold. Top 5 includes Duck Hunt (1985) and Tetris (1984). Various titles in the Call of Duty Franchise appear in the top 25. 
+
+![Popular Titles EU](https://user-images.githubusercontent.com/110264861/193208761-e3cabd41-3326-493b-8fce-87bf057c4abc.png)
+
+Wii Sports is again the victor in EU. Call of Duty isn't nearly as popular as in NA (which is somewhat expected), although Grand Theft Auto is also in the Top 5. 11 out of the Top 15 are Nintendo released titles. PC game World of Warcraft makes the top 20. 
+
+![Popular Titles JP](https://user-images.githubusercontent.com/110264861/193208794-a32ee175-37f7-4eac-a43c-493db5edac86.png)
+
+JP sales region has dramatically different tastes. The 1996 release Pokemon Red/Pokemon Blue and the follow up 1999 Pokemon Gold/Pokemon Silver are clear winners. Almost all games in this list are released by Nintendo as a Japense publisher. 
+
+3. Popular genres by sales regions
+
 ![Genres NA](https://user-images.githubusercontent.com/110264861/193208341-4ac1cbb5-e912-48e5-9c44-d778f08ae646.png)
+
+As expected Action, Sports, and Shooter have the highest unit counts. While franchies like Call of Duty boost the Shooters category and individually sold more units than most titles, over the complete time span Action and Sports have been more popular, particullary Wii Sports. 
 
 ![Genres EU](https://user-images.githubusercontent.com/110264861/193208387-7cd2ffee-9717-40b6-9488-d0aba3ba12d1.png)
 
+EU looks very similar to NA, with Action, Shooter, and Sports being the most popular. 
+
 ![Genres JP](https://user-images.githubusercontent.com/110264861/193208430-3714b287-f4df-4179-80e1-fb860f037f6d.png)
 
+Again the JP region looks very different from the other two. JP clearly favores Role-Playing games, namely Pokemon. 
 
+4. Popular Publishers by sales region
 
+![Publishers NA](https://user-images.githubusercontent.com/110264861/193212831-874e70b7-b4f9-4fb4-98a4-05c1ea2f1876.png)
 
+Nintendo as a publisher shows up a lot. Nintendo has over 800 million copies sold in NA. Electronic Arts and Activision are No. 2 and 3. 
 
+![Publishers EU ](https://user-images.githubusercontent.com/110264861/193212880-42a156eb-3dd3-4a07-8f98-ef6ff8247ba4.png)
+
+This is seen again in EU in the same order. The EU market is nearly half the size of NA, but the popular publishers are the same. 
+
+![Publishers JP](https://user-images.githubusercontent.com/110264861/193212894-770aadcf-b968-4e90-bc3e-647caa12bd23.png)
+
+As expected, Nintendo makes up over 40% of the JP market. 
 
 
