@@ -2,8 +2,8 @@
 
 ## Summary:
 
-Purpose is to summarize which video game titles, genres, platforms, and publishers are most popular, when, and where. 
-Dataset obtained on Kaggle: 
+Purpose: Summarize which video game titles, genres, platforms, and publishers are most popular, when, and where. 
+Dataset obtained through Kaggle: 
 
 [video_game_dataset](https://www.kaggle.com/datasets/gregorut/videogamesales)
 
@@ -371,14 +371,39 @@ ORDER BY total_sales DESC
 
 ## Conclusion and Findings 
 
+- Show most successful games by sales region 
+
+- Show trends in genre over time / Show most popular genres by sales region
+
+- Popular publisher by sales region and genre
+
+
 [All Viz](https://public.tableau.com/app/profile/lucas.condeni/viz/vgsalesviz/videogame_sales)
 
-Here's what the data showed about the objectives. Starting with total sales in each of the three sales regions (NA, EU, JP) over the specified timeframe. Also shown is average sales:
+1. Overview of the three sales regions (NA, EU, JP) over the specified timeframe by total units sold and average units sold:  
 
 ![All Sales Years](https://user-images.githubusercontent.com/110264861/192432491-5b7c06ca-1782-4b47-b11a-63313852e591.png)
 
+North America has a much larger market than Europe or Japan likely based on a larger population. Platform and genre total sales: 
 
-North America has a much larger market than Europe or Japan which makes sense based on population. Then platform total sales: 
+![Platform Total Sales](https://user-images.githubusercontent.com/110264861/193207586-5d9bba98-a4be-4ae4-b4e9-fd846df86a80.png)
+
+The flagship platforms of Nintendo DS (handheld), Playstation 1-3, Wii, and Xbox 360 sold the most units. As the data ends in 2016, Playstation 4-5 and Xbonx One have likely surpassed these figures. 
+
+![Genre Total Sales](https://user-images.githubusercontent.com/110264861/193207618-bf16fc11-d1b3-48d2-a76e-c76ae3c7a7e3.png)
+
+There are multiple genres that stand out, but Action and Sports are clear favorites. 
+
+2. Top game titles in each sales region: 
+
+![Genres NA](https://user-images.githubusercontent.com/110264861/193208341-4ac1cbb5-e912-48e5-9c44-d778f08ae646.png)
+
+![Genres EU](https://user-images.githubusercontent.com/110264861/193208387-7cd2ffee-9717-40b6-9488-d0aba3ba12d1.png)
+
+![Genres JP](https://user-images.githubusercontent.com/110264861/193208430-3714b287-f4df-4179-80e1-fb860f037f6d.png)
+
+
+
 
 
 
