@@ -373,7 +373,9 @@ ORDER BY total_sales DESC
 
 [All Viz](https://public.tableau.com/app/profile/lucas.condeni/viz/vgsalesviz/videogame_sales)
 
-1. Overview of the three sales regions (NA, EU, JP) over the specified timeframe by total units sold and average units sold:  
+### 1. Popular Platforms/Genres
+
+Overview of the three sales regions (NA, EU, JP) over the specified timeframe by total units sold and average units sold:  
 
 ![All Sales Years](https://user-images.githubusercontent.com/110264861/192432491-5b7c06ca-1782-4b47-b11a-63313852e591.png)
 
@@ -387,7 +389,7 @@ The flagship platforms of Nintendo DS (handheld), Playstation 1-3, Wii, and Xbox
 
 There are multiple genres that stand out, but Action and Sports are clear favorites. 
 
-2. Top game titles in each sales region: 
+### 2. Top game titles in each sales region: 
 
 ![Popular Titles NA](https://user-images.githubusercontent.com/110264861/193208828-a07eab7d-4abe-4711-8da8-f4a9e8643f5a.png)
 
@@ -401,7 +403,7 @@ Wii Sports is again the victor in EU. Call of Duty isn't nearly as popular as in
 
 JP sales region has dramatically different tastes. The 1996 release Pokemon Red/Pokemon Blue and the follow up 1999 Pokemon Gold/Pokemon Silver are clear winners. Almost all games in this list are released by Nintendo as a Japense publisher. 
 
-3. Popular genres by sales regions
+### 3. Popular genres by sales regions
 
 ![Genres NA](https://user-images.githubusercontent.com/110264861/193208341-4ac1cbb5-e912-48e5-9c44-d778f08ae646.png)
 
@@ -415,7 +417,7 @@ EU looks very similar to NA, with Action, Shooter, and Sports being the most pop
 
 Again the JP region looks very different from the other two. JP clearly favores Role-Playing games, namely Pokemon. 
 
-4. Popular Publishers by sales region
+### 4. Popular Publishers by sales region
 
 ![Publishers NA](https://user-images.githubusercontent.com/110264861/193212831-874e70b7-b4f9-4fb4-98a4-05c1ea2f1876.png)
 
