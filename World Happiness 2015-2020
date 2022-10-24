@@ -1,0 +1,21 @@
+CREATE TABLE public."WHC" ( 
+
+Country character varying (100), 
+	happiness numeric, 
+	gdp numeric, 
+	family numeric, 
+	heath numeric, 
+	freedom numeric, 
+	generosity numeric, 
+	government numeric, 
+	dystopia numeric, 
+	continent character varying (100), 
+	year date, 
+	social_supp numeric, 
+	cpi numeric
+)
+
+\COPY public."WHC" FROM '/Users/lucascondeni/Downloads/WorldHappiness_Corruption_2015_2020.csv' WITH CSV HEADER ; 
+
+ALTER TABLE public."WHC"
+ADD COLUMN year integer
