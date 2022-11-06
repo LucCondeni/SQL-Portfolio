@@ -1,10 +1,10 @@
 
 ## Data Sources
 
-!World Happiness[https://www.kaggle.com/datasets/eliasturk/world-happiness-based-on-cpi-20152020]
+!World Happiness [https://www.kaggle.com/datasets/eliasturk/world-happiness-based-on-cpi-20152020]
 
-!Country Population[https://data.worldbank.org/indicator/SP.POP.TOTL]
-
+!Country Population [https://data.worldbank.org/indicator/SP.POP.TOTL]
+ 
 ## Create Tables and import data 
 
 CREATE TABLE "WHC" (
