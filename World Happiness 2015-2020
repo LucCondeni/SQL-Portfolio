@@ -1,11 +1,11 @@
 
-##Data Sources
+## Data Sources
 
 https://www.kaggle.com/datasets/eliasturk/world-happiness-based-on-cpi-20152020
 
 https://data.worldbank.org/indicator/SP.POP.TOTL
 
-##Create Tables and import data 
+## Create Tables and import data 
 
 CREATE TABLE "WHC" (
     "country" varchar(100)   NOT NULL,
