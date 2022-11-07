@@ -44,8 +44,20 @@ WITH CSV HEADER;
 FROM '/World Happiness/pop total .csv'
 WITH CSV HEADER; 
 
+--Check table for NULL
+--There are no NULL
+
+SELECT country, happiness, gdp, family, health, freedom, generosity, government, dystopia, continent, year, 
+	social_supp, cpi, id
+FROM "WHC"
+WHERE country IS NULL OR happiness IS NULL OR gdp IS NULL OR family IS NULL OR 
+	health IS NULL OR freedom IS NULL OR generosity IS NULL OR government IS NULL OR 
+	dystopia IS NULL OR continent IS NULL OR year IS NULL OR 
+	social_supp IS NULL OR cpi IS NULL OR id IS NULL 
+
 
 --Analysis 
+
 
 
 
