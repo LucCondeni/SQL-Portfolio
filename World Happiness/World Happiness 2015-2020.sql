@@ -44,6 +44,8 @@ WITH CSV HEADER;
 FROM '/World Happiness/pop total .csv'
 WITH CSV HEADER; 
 
+--CLEAN DATA?
+	--Data is clean. 
 --Check table for NULL
 --There are no NULL
 
