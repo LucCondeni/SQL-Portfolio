@@ -60,6 +60,17 @@ WHERE country IS NULL OR happiness IS NULL OR gdp IS NULL OR family IS NULL OR
 
 --Analysis 
 
+-- 1. What are the variables? 
+
+
+-- 2. Can we segregate the data? 
+
+SELECT DISTINCT continent 
+FROM "WHC"
+
+-- Australia, Africa, Asia, South America, North America, Europe
+
+
 
 
 
