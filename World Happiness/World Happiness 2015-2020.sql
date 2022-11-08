@@ -47,7 +47,6 @@ WITH CSV HEADER;
 --CLEAN DATA?
 	--Data is clean. 
 --Check table for NULL
---There are no NULL
 
 SELECT country, happiness, gdp, family, health, freedom, generosity, government, dystopia, continent, year, 
 	social_supp, cpi, id
@@ -57,11 +56,27 @@ WHERE country IS NULL OR happiness IS NULL OR gdp IS NULL OR family IS NULL OR
 	dystopia IS NULL OR continent IS NULL OR year IS NULL OR 
 	social_supp IS NULL OR cpi IS NULL OR id IS NULL 
 
+--There are no NULL
 
 --Analysis 
 
 -- 1. What are the variables? 
 
+SELECT * 
+FROM "WHC"
+LIMIT 1
+
+-Country — the country 
+-GDP - gross domestic product
+-family - family score
+-health
+-freedom
+-generosity
+-government 
+-dystopia
+-continent 
+-social_supp
+-cpi 
 
 -- 2. Can we segregate the data? 
 
