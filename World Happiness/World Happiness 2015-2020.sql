@@ -67,6 +67,7 @@ FROM "WHC"
 LIMIT 1
 
 -Country — the country 
+-Happiness
 -GDP - gross domestic product
 -family - family score
 -health
@@ -78,14 +79,14 @@ LIMIT 1
 -social_supp
 -cpi 
 
--- 2. Can we segregate the data? 
+-- 2. Can we group the data? 
 
 SELECT DISTINCT continent 
 FROM "WHC"
 
--- Australia, Africa, Asia, South America, North America, Europe
+Australia, Africa, Asia, South America, North America, Europe
 
-
+-- 3. What are the variable's correlation regardless of group?
 
 
 
