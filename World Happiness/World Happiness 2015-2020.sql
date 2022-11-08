@@ -88,5 +88,15 @@ Australia, Africa, Asia, South America, North America, Europe
 
 -- 3. What are the variable's correlation regardless of group?
 
-
+SELECT
+CORR (happiness, gdp) AS gdp_corr, 
+CORR (happiness, family) AS family_corr, 
+CORR(happiness, health) AS health_corr, 
+CORR(happiness, freedom) AS freedom_coor, 
+CORR(happiness, generosity) AS generosity_corr, 
+CORR(happiness, government) AS government_corr, 
+CORR(happiness, dystopia) AS dystopia_corr, 
+CORR(happiness, social_supp) AS social_supp_corr, 
+CORR(happiness, cpi) AS cpi_corr
+FROM "WHC"
 
