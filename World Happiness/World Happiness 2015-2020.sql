@@ -66,18 +66,18 @@ SELECT *
 FROM "WHC"
 LIMIT 1
 
--Country — the country 
--Happiness
--GDP - gross domestic product
--family - family score
--health
--freedom
--generosity
--government 
--dystopia
--continent 
--social_supp
--cpi 
+--Country — the country 
+--Happiness
+--GDP - gross domestic product
+--family - family score
+--health
+--freedom
+--generosity
+--government 
+--dystopia
+--continent 
+--social_supp
+--cpi 
 
 -- 2. Can we group the data? 
 
