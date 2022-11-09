@@ -79,14 +79,21 @@ LIMIT 1
 --social_supp
 --cpi 
 
--- 2. Can we group the data? 
+-- 2. Can we group the data? Primary grouping is by continent > country 
+--Can also group by year 
 
 SELECT DISTINCT continent 
 FROM "WHC"
 
 Australia, Africa, Asia, South America, North America, Europe
 
--- 3. What are the variable's correlation regardless of group?
+SELECT * 
+FROM "WHC"
+WHERE year = 2015 
+
+-- Repeat for 2016-2020
+
+-- 3. What are the variables' correlation to happiness regardless of group?
 
 SELECT
 CORR (happiness, gdp) AS gdp_corr, 
@@ -100,3 +107,66 @@ CORR(happiness, social_supp) AS social_supp_corr,
 CORR(happiness, cpi) AS cpi_corr
 FROM "WHC"
 
+--4. What's the correlation between population and happiness based on year and continent? 
+--EUROPE
+WITH eu_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Europe' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(eu.population, eu.happiness) as eu_corr_2015
+FROM "eu_corr" eu 
+--AUSTRALIA
+WITH au_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Australia' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(au.population, au.happiness) as au_corr_2015
+FROM "au_corr" au
+--AFRICA
+WITH af_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Africa' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(af.population, af.happiness) as af_corr_2015
+FROM "af_corr" af
+--ASIA
+WITH as_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Asia' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(a_s.population, a_s.happiness) as as_corr_2015
+FROM "as_corr" a_s
+--SOUTH AMERICA
+WITH as_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Asia' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(a_s.population, a_s.happiness) as as_corr_2015
+FROM "as_corr" a_s
+--NORTH AMERICA
+WITH as_corr AS (
+SELECT whc.country, whc.year, wp."2015" as population, whc.happiness
+FROM "WHC" whc INNER JOIN "World_Population" wp 
+ON whc.country = wp.country
+WHERE whc.continent = 'Asia' AND whc.year = 2015
+ORDER BY whc.country, population DESC
+)
+SELECT CORR(a_s.population, a_s.happiness) as as_corr_2015
+FROM "as_corr" a_s
+
+-- repeat for 2016-2020
