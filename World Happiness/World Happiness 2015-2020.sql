@@ -238,3 +238,10 @@ SELECT country, year, (AVG(happiness) - LAG(AVG(happiness)) OVER(ORDER BY year))
 FROM "WHC"
 GROUP BY country, year
 ORDER BY country, year ASC
+
+--Which country is happiness on average? 
+
+SELECT country, AVG(happiness)
+FROM "WHC"
+GROUP BY country 
+ORDER BY AVG(happiness) DESC
