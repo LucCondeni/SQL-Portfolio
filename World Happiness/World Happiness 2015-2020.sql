@@ -169,4 +169,72 @@ ORDER BY whc.country, population DESC
 SELECT CORR(a_s.population, a_s.happiness) as as_corr_2015
 FROM "as_corr" a_s
 
--- repeat for 2016-2020
+--repeat for 2016-2020
+
+--Aggregate Data
+
+--Average happiness by country, sorted by continent  
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'Australia'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'Africa'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'Europe'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'Asia'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'South America'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+SELECT whc.country, AVG(happiness) as avg_happiness
+FROM "WHC" whc
+WHERE whc.continent = 'North America'
+GROUP BY whc.country
+ORDER BY avg_happiness DESC
+
+--Average happiness by continent and year? 
+
+SELECT continent, year, AVG(happiness) 
+FROM "WHC"
+GROUP BY continent, year
+ORDER BY year ASC
+
+--Max happiness by continent and year? 
+
+SELECT continent, year, MAX(happiness) 
+FROM "WHC"
+GROUP BY continent, year
+ORDER BY year ASC
+
+--Min happiness by continent and year? 
+
+SELECT continent, year, MIN(happiness) 
+FROM "WHC"
+GROUP BY continent, year
+ORDER BY year ASC
+
+--Difference in happiness by year? 
+
+SELECT country, year, (AVG(happiness) - LAG(AVG(happiness)) OVER(ORDER BY year)) AS happiness_diff
+FROM "WHC"
+GROUP BY country, year
+ORDER BY country, year ASC
